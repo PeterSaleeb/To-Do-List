@@ -17,22 +17,23 @@ function addTask(e) {
     console.log("Hello");
 
     editTask.childNodes[0].childNodes[0].nodeValue =
-        document.getElementById("task").value;
+      document.getElementById("task").value;
 
     submit.value = "Submit";
     document.getElementById("task").value = "";
 
     document.getElementById("lblsuccess").innerHTML =
-        "Text edited successfully";
+      "Text edited successfully";
 
     document.getElementById("lblsuccess").style.display = "block";
+    document.getElementById("task").blur();
 
     setTimeout(function () {
-        document.getElementById("lblsuccess").style.display = "none";
+      document.getElementById("lblsuccess").style.display = "none";
     }, 3000);
 
     return false;
-}
+  }
 
   let newTask = document.getElementById("task").value;
   if (newTask.trim() == "" || newTask.trim() == null)
@@ -95,9 +96,10 @@ function removeTask(e) {
   if (e.target.classList.contains("edit")) {
     let taskText = e.target.parentNode.parentNode.childNodes[0].innerText;
     document.getElementById("task").value = taskText.trim();
+    document.getElementById("task").focus();
     submit.value = "EDIT";
     editTask = e.target.parentNode.parentNode; // Store the reference to the task's li element
-}
+  }
 }
 
 function toggleButton(ref, btnID) {
